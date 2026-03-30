@@ -4,12 +4,12 @@ var player *Player
 var doorOpened bool
 
 func initGame() {
-	kitchen := newRoom("кухня")
-	corridor := newRoom("коридор")
-	room := newRoom("комната")
-	street := newRoom("улица")
+	kitchen := newRoom("кухня", kitchenLook)
+	corridor := newRoom("коридор", corridorLook)
+	room := newRoom("комната", roomLook)
+	street := newRoom("улица", streetLook)
 
-	connectRoom(kitchen, "кухня", corridor)
+	connectRoom(kitchen, "коридор", corridor)
 	connectRoom(corridor, "кухня", kitchen)
 	connectRoom(corridor, "комната", room)
 	connectRoom(corridor, "улица", street)
@@ -20,8 +20,6 @@ func initGame() {
 	addItemToRoom(room, "ключи", "стол")
 	addItemToRoom(room, "конспекты", "стол")
 	addItemToRoom(room, "рюкзак", "стул")
-
-	//TODO add look funcs
 
 	player = newPlayer(kitchen)
 
